@@ -1,0 +1,18 @@
+安装react环境：
+
+1 npm install -g create-react-app
+
+2 创建app
+create-react-app my-learn
+
+3 启动app
+cd my-learn
+npm start
+
+
+4 其他命令
+ npm run build
+    Bundles the app into static files for production.
+
+  npm test
+    Starts the test runner.
