@@ -30,3 +30,8 @@
 a{
   margin-right: 20px;
 }
+
+.navbar a.active{
+  color: red;
+  background: #eee;
+}
