@@ -41,4 +41,12 @@ class App extends Component {
 }
 
 
+4 动态路由传参
+4.1 路由配置：
+<Route path="detail/:paramName" component={Detail}/>
+
+4.2 组件参数接收：
+this.props.match.params.paramName
+
+
 

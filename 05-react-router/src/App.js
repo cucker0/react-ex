@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 import Home from './components/Home'
 import News from './components/News'
 import Others from './components/Others'
+import Detail from './components/Detail'
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route path='/news' component={News} />
             <Route path='/others' component={Others} />
+            <Route path='/detail/:tel' component={Detail} />
           </div>
         </Router>
       </div>
