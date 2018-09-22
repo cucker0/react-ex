@@ -19,6 +19,15 @@ class Home extends Component{
 							</li>
 						)
 					})}
+					<li>
+						<NavLink to="/detail">无参数链接</NavLink>
+					</li>
+					<li>
+						<NavLink to="/detail/abc">非数字链接</NavLink>
+					</li>
+					<li>
+						<NavLink to="/detail/112233">112233</NavLink>
+					</li>
 				</ul>
 			</div>
 		)

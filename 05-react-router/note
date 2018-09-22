@@ -48,5 +48,28 @@ class App extends Component {
 4.2 组件参数接收：
 this.props.match.params.paramName
 
+4.3 路径匹配规则：
+ 4.3.1 ?代表参数可选。例如：
+	 <Route path="/detail/:id?" component={detail}/>
+
+	 下面两种情况都条例跳转条件：
+	 /detail
+	 /detail/10086
+
+ 4.3.2 使用正则表达式路径参数的类型进行限制
+    限制id只能是数字
+    <Route path="/detail:id(\d+)" component={detail}/>
+	路径匹配结果：
+	/detail/10086       ok
+	/detail/abc         无法匹配
+
+5 路由重定向
+需要引入 Switch, Redirect模块
+import { BrowserRouter as Router, Route, Link, NavLink , Switch, Redirect} from 'react-router-dom'
+
+    <Switch>
+	  <Redirect from="/*" to='/' />                     //   任何不存在的页面跳转到 /
+	</Switch>
+
 
 

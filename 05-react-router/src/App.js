@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, NavLink , Switch, Redirect} from 'react-router-dom'
 import Home from './components/Home'
 import News from './components/News'
 import Others from './components/Others'
@@ -27,7 +27,11 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route path='/news' component={News} />
             <Route path='/others' component={Others} />
-            <Route path='/detail/:tel' component={Detail} />
+            {/*<Route path='/detail/:tel(\d+)?' component={Detail} />*/}
+            <Route path='/detail/:tel(\d{5})' component={Detail} />
+            <Switch>
+              <Redirect from="/*" to='/' />
+            </Switch>
           </div>
         </Router>
       </div>
