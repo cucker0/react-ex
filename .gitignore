@@ -1,1 +1,4 @@
-/01-test/.idea
+example/
+node_modules
+.idea
+/package-lock.json

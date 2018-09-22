@@ -1,28 +1,21 @@
-.App {
-  text-align: center;
+.reactAnim-enter{
+  margin-left: -200px;
+  transition-duration: 500ms;
+  transform: rotate(0deg);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.reactAnim-enter-active{
+  margin-left: 0px;
+  transform: rotate(360deg);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.reactAnim-leave{
+  margin-left: 0px;
+  opacity: 1;
+  transition-duration: 300ms;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.reactAnim-leave-active{
+  margin-left: 600px;
+  opacity: 0;
 }

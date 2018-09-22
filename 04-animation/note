@@ -1,0 +1,50 @@
+react动画
+
+
+原理通过css样式实现动画
+
+1 安装 react-addons-css-transition-group组件
+npm install --save-dev react-addons-css-transition-group
+
+
+2 引用react-addons-css-transition-group组件
+App.js文件：
+import ReactAddonsCssTransitionGroup from 'react-addons-css-transition-group'
+
+
+3 组件中使用react-addons-css-transition-group
+        <ReactAddonsCssTransitionGroup
+          transitionName="examp"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+          >
+          {items}
+          </ReactAddonsCssTransitionGroup>
+
+4 动画样式
+App.css文件中设置样式
+.examp-enter{
+  margin-left: -200px;
+  transition-duration: 500ms;
+  transform: rotate(0deg);
+}
+
+.examp-enter-active{
+  margin-left: 0px;
+  transform: rotate(360deg);
+}
+
+.examp-leave{
+  margin-left: 0px;
+  opacity: 1;
+  transition-duration: 300ms;
+}
+
+.examp-leave-active{
+  margin-left: 600px;
+  opacity: 0;
+}
+
+
+
+

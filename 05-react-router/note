@@ -1,0 +1,44 @@
+react 路由功能
+
+1 安装路由组件
+npm install --save react-router-dom
+
+2 引用组件
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
+3 使用react-router-dom
+
+<Router>
+	<div>
+
+		<Link to='/'>主页</Link>          //相当于a标签
+		<Route exact path='/' component={Home} />
+		<Route path='/news' component={News} />
+	</div>
+</Router>
+
+App.js文件：
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <div className="rlink">
+            <Link to='/'>主页</Link>
+            <Link to='/news'>新闻</Link>
+            <Link to='/others'>其他</Link>
+
+            <hr/>
+	          {/* exact  精确匹配  */}
+            <Route exact path='/' component={Home} />
+            <Route path='/news' component={News} />
+            <Route path='/others' component={Others} />
+          </div>
+        </Router>
+      </div>
+    );
+  }
+}
+
+
+
