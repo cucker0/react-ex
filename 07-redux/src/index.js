@@ -4,8 +4,10 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import TodoListReducer from './reducers/TodoListReducer';
+import thunk from 'redux-thunk'
+import CountReducer from './reducers/CountReducer'
 
 
 // const reducer= (state={list:[]}, action={})=>{
@@ -21,10 +23,11 @@ import TodoListReducer from './reducers/TodoListReducer';
 // }
 
 const reducer = combineReducers({
-	list: TodoListReducer
+	list: TodoListReducer,
+	count: CountReducer
 })
 
-const store = createStore(reducer, {list: []});
+const store = createStore(reducer, {list: []}, applyMiddleware(thunk));
 
 function renderPage(){
 	ReactDOM.render(<App store={store}/>, document.getElementById('root'));

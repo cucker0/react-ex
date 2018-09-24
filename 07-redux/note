@@ -88,6 +88,42 @@ const reducer = combineReducers({
 })
 
 
+5 Middleware的由来
+在redux里，action仅仅是携带了数据的普通js对象。action creator返回的值是这个action类型的对象。
+然后通过store.dispatch()进行分发。
+
+同步的情况下一切都很完美，但是reducer无法处理异步的情况。
+例如：我希望点击一个按钮，2秒之后更新视图，显示消息"Hi"。
+那么我们就需要在acion和reducer中间架起一座桥梁来处理异步。这就是middleware.
+
+理解middleware机制
+参考代码：
+
+export default function thunkMiddleware({dispatch, getState}){
+	return next=>action=>
+		typeof action === 'function' ?
+		action(dispatch, getState):
+		next(action);
+}
+
+这段代码的意思是，中间这个桥梁接受到的参数action,如果不是function则和过去一样直接执行next
+方法（下一步处理）。相当于中间件没有做任何事。
+如果action是function,则先执行action,action的处理结束之后，再在action的内部调用dispatch.
+
+6 redux异步流 -- redux-thunk
+store.dispatch参数可以是一个function
+
+6.0 安装redux-thunk组件
+npm install --save redux-thunk
+
+使用方法：
+6.1 引用组件：
+import thunk from 'redux-thunk';
+
+6.2 加入中间件
+const store = createStore(fetchReducer, applyMiddleware(thunk));
+
+
 
 
 

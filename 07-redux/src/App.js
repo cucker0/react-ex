@@ -6,6 +6,8 @@ class App extends Component {
   constructor(){
     super();
     this.addTodo = this.addTodo.bind(this);
+    this.addOne = this.addOne.bind(this);
+    this.minusOne = this.minusOne.bind(this);
   }
 
   addTodo(){
@@ -15,8 +17,31 @@ class App extends Component {
     })
   }
 
+  addOne(){
+    this.props.store.dispatch((dispatch, state)=>{
+      setTimeout(function () {
+	      dispatch({
+          type:'ADD_ONE',
+          payload: 1
+        })
+      }, 2000);
+    })
+  }
+
+	minusOne(){
+    this.props.store.dispatch((dispatch, state)=>{
+      setTimeout(function () {
+        dispatch({
+          type:"MINUS_ONE",
+          payload: 1
+        })
+      }, 1000)
+    })
+  }
+
   render() {
     const list = this.props.store.getState().list;
+    const count = this.props.store.getState().count;
     return (
       <div className="App">
         <input type="text" ref="todoVal"/>
@@ -28,6 +53,8 @@ class App extends Component {
             </li>
           })}
         </ul>
+        <hr/>
+        <button onClick={this.minusOne}>-1</button><span>{count}</span><button onClick={this.addOne}>+1</button>
       </div>
     );
   }
