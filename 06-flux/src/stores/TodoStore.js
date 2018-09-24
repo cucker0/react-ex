@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events'
 import assign from 'object-assign'
 
-const Store = assign({}, EventEmitter.prototype, {
+const Store = assign({}, EventEmitter.prototype, {      //或用Object.assign()
 	list: [],
 	getTodoListData: function(){
 		return this.list;
