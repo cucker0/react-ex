@@ -1,0 +1,78 @@
+flux
+
+1 什么是flux
+flux是facebook用来构建客户端web应用的应用架构。它利用单向数据流的方式来组合
+React中视图组件。它更像一个模式而不是一个正式的框架，开发者不需要太多的新代码
+就可以快速的上手flux。
+
+
+2 基本概念
+讲解代码之前，你需要知道一些 Flux 的基本概念。
+首先，Flux将一个应用分成四个部分。
+
+View： 视图层
+Action（动作）：视图层发出的消息（比如mouseClick）
+Dispatcher（派发器）：用来接收Actions、执行回调函数
+Store（数据层）：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面
+Flux 的最大特点，就是数据的“单向流动”。
+
+
+2.1 用户访问 View
+2.2 View 发出用户的 Action
+2.3 Dispatcher 收到 Action，要求 Store 进行相应的更新
+2.4 Store 更新后，发出一个”change”事件
+2.5 View 收到”change”事件后，更新页面
+上面过程中，数据总是”单向流动”，Action >Dispatcher > Store ,任何相邻的部分都不会发生数据的”双向流动”。这保证了流程的清晰。
+
+3 四个组成部分
+*View: 视图层
+*Action(动作)：视图层发出的消息（比如click）
+*Dispatcher(派发器)：用来接收Actions、执行回调函数
+*Store(数据层)：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面
+
+controller-view
+可以理解为MVC模型中的controller
+它一般由应用的顶层容器充当，负责从Store中获取数据并将数据传递到子组件中。简单的应用一般只有一个controller-view,
+复杂的应用中也可以有多个。controller-view是应用中唯一可以操作state的地方(setState()  )
+
+dispatcher与action
+dispatcher是事件调度中心，flux模型的中心枢纽，管理着flux应用中的所有数据流。它本质上是Store的回调注册。每个Store注册它自己并提供一个回调函数。
+当Dispatcher响应Action时，通过已注册的回调函数，将Action提供的数据负载发送给应用中的Store。
+
+Store
+负责封装应用的业务逻辑跟数据的交互。
+*Store中包含应用所有的数据
+*Store是应用中唯一的数据发生变更的地方
+*Store中没有赋值接口--所有数据变更都是由dispatcher发送到store，新的数据随着Store触发的change事件传回view。Store对外只暴露getter，不允许提供
+setter!!禁止在任何地方直接操作Store。
+
+View
+view(UI组件)ui-component职责单一，只允许调用action触发事件，数据从由上层容器通过属性传递过来。
+
+actionCreator
+actionCreators是相对独立的，它作为语法上的辅助函数以action的形式使得dispathcer传递数据更为便利。
+
+
+
+flux组件安装
+npm install --save flux
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
