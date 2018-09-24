@@ -19,7 +19,7 @@ class App extends Component {
 
   addOne(){
     this.props.store.dispatch((dispatch, state)=>{
-      setTimeout(function () {
+      setTimeout(function () {      //两秒后执行dispatch
 	      dispatch({
           type:'ADD_ONE',
           payload: 1
@@ -54,6 +54,10 @@ class App extends Component {
           })}
         </ul>
         <hr/>
+        <div>
+          两秒后显示 +1 操作结果,
+          1秒后显示 -1 操作结果
+        </div>
         <button onClick={this.minusOne}>-1</button><span>{count}</span><button onClick={this.addOne}>+1</button>
       </div>
     );
